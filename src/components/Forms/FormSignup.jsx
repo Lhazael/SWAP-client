@@ -5,8 +5,12 @@ import apiHandler from "../../api/apiHandler";
 
 class FormSignup extends Component {
   state = {
+    firstName: "",
+    lastName: "",
+    username: "",
     email: "",
     password: "",
+
   };
 
   handleChange = (event) => {
@@ -36,6 +40,28 @@ class FormSignup extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
+        <label htmlFor="firstName">First Name</label>
+        <input
+          onChange={this.handleChange}
+          value={this.state.firstName}
+          type="firstName"
+          id="firstName"
+          name="firstName"
+        /><label htmlFor="lastName">Last Name</label>
+        <input
+          onChange={this.handleChange}
+          value={this.state.lastName}
+          type="lastName"
+          id="lastName"
+          name="lastName"
+        /><label htmlFor="username">Username</label>
+        <input
+          onChange={this.handleChange}
+          value={this.state.username}
+          type="username"
+          id="username"
+          name="username"
+        />
         <label htmlFor="email">Email</label>
         <input
           onChange={this.handleChange}
