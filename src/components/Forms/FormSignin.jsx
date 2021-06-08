@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import { withUser } from "../Auth/withUser";
+import Button from "../Base/Button";
 
 class FormSignin extends Component {
   state = {
@@ -41,7 +42,7 @@ class FormSignin extends Component {
         <input type="email" id="email" name="email" />
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" />
-        <button>Submit</button>
+        <Button>Submit</Button>
       </form>
     );
   }
