@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Redirect } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import { withUser } from "../Auth/withUser";
 import Button from "../Base/Button";
@@ -37,6 +37,7 @@ class FormSignin extends Component {
     }
 
     return (
+    <section className="form-section">
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" />
@@ -44,6 +45,11 @@ class FormSignin extends Component {
         <input type="password" id="password" name="password" />
         <Button>Submit</Button>
       </form>
+       <div className="form-section link">
+       <p>Don't have an account yet?  <Link to="/signup"><b>Register</b></Link></p>
+      
+     </div>
+    </section>
     );
   }
 }

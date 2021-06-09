@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Redirect } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import { withUser } from "../Auth/withUser";
 import apiHandler from "../../api/apiHandler";
 import Button from "../Base/Button";
@@ -40,6 +40,7 @@ class FormSignup extends Component {
     }
 
     return (
+      <section className="form-section">
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="firstName">First Name</label>
         <input
@@ -80,7 +81,12 @@ class FormSignup extends Component {
           name="password"
         />
         <Button>Submit</Button>
+        <div className="form-section link">
+       <p>Already have an account? <Link to="/signin"><b>Sign in!</b></Link> </p>
+     </div>
+
       </form>
+      </section>
     );
   }
 }

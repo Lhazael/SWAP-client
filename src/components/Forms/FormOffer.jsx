@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { withRouter, Redirect } from "react-router-dom";
+// import { withRouter, Redirect } from "react-router-dom";
 import { withUser } from "../Auth/withUser";
 import apiHandler from "../../api/apiHandler";
 import Button from "../Base/Button";
 import { buildFormData } from "../../utils";
 import FeedBack from "../FeedBack";
-import Message from "../Message";
-import axios from "axios";
+import UploadWidget from "../UploadWidget";
+// import Message from "../Message";
+// import axios from "axios";
 
 const initialState = {
     title: "",
@@ -19,8 +20,10 @@ const initialState = {
     price: "",
 }
 
-class FormOffer extends React.Component {
+class FormOffer extends Component {
     state = initialState;
+
+    imageRef = React.createRef();
 
     handleChange = (event) => {
         const value = event.target.value;
@@ -31,7 +34,7 @@ class FormOffer extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        if (!this.state.title && !this.state.description && !this.state.condition && !this.state.size && !this.state.lookingFor && !this.state.picture && !this.state.price) {
+        if (!this.state.title) {
             this.setState({ error: "All categories are required !" }, () => {
               this.timeoutId = setTimeout(() => {
                 this.setState({ error: null });
@@ -44,12 +47,12 @@ class FormOffer extends React.Component {
     const { httpResponse, ...data } = this.state;
     buildFormData(fd, data);
 
-    fd.append("picture", this.picture.current.files[0]);
+    fd.append("image", this.imageRef.current.files[0]);
 
     apiHandler
-        .addItem(fd)
+        .addOffer(fd)
         .then((data) => {
-            this.props.addItem(data);
+            this.props.addOffer(data);
 
             this.setState({
                 ...initialState,
@@ -81,11 +84,8 @@ class FormOffer extends React.Component {
         const { httpResponse, error } = this.state;
 
       return (
-        <div className="ItemForm-container">
-        <form className="ItemForm" onSubmit={this.handleSubmit}>
-          <p onClick={this.props.handleClose} className="close-link">
-            X
-          </p>
+        <div className="FormOffer-container">
+        <form className="FormOffer" onSubmit={this.handleSubmit}>
           <h2>Create your offer</h2>
           {httpResponse && (
             <FeedBack
@@ -101,7 +101,7 @@ class FormOffer extends React.Component {
               className="input"
               type="text"
               onChange={this.handleChange}
-              value={this.state.name}
+              value={this.state.title}
               placeholder="e.g.: Air Jordan 1 Union Blue Storm"
               name="title"
             />
@@ -184,7 +184,7 @@ class FormOffer extends React.Component {
               placeholder="What are you looking for?"
             ></textarea>
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
           <label className="label" htmlFor="picture">Pictures</label>
         <input
           id="picture"
@@ -192,6 +192,11 @@ class FormOffer extends React.Component {
           type="file"
           className="input"
         /> 
+          </div> */}
+          <div className="form-group">
+            <UploadWidget ref={this.imageRef} name="picture">
+              Upload picture
+            </UploadWidget>
           </div>
           <div className="form-group">
             <label className="label" htmlFor="price">
@@ -206,12 +211,6 @@ class FormOffer extends React.Component {
             />
           </div>
 
-          {/* <div className="form-group">
-            <UploadWidget ref={this.imageRef} name="image">
-              Upload image
-            </UploadWidget>
-          </div> */}
-
           {error && <FeedBack message={error} status="failure" />}
           <Button primary>Add</Button>
         </form>
@@ -221,4 +220,4 @@ class FormOffer extends React.Component {
     };
 
 
-export default withRouter(withUser(FormOffer));
+export default (withUser(FormOffer));
