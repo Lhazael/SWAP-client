@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import About from "./pages/About";
 import Discover from "./pages/Discover";
 import FormOffer from "./components/Forms/FormOffer";
+import Sneaker from "./pages/Sneakers";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/create-offer" component={FormOffer} />
         <Route exact path="/about" component={About} />
         <Route exact path="/discover" component={Discover} />
+        <Route path="/sneakers" component= {Sneaker} />
       </Switch>
     </div>
   );

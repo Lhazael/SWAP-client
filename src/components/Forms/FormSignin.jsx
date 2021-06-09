@@ -3,6 +3,7 @@ import { Link, withRouter, Redirect } from "react-router-dom";
 import apiHandler from "../../api/apiHandler";
 import { withUser } from "../Auth/withUser";
 import Button from "../Base/Button";
+import "../../styles/Form.css"
 
 class FormSignin extends Component {
   state = {
@@ -38,17 +39,24 @@ class FormSignin extends Component {
 
     return (
     <section className="form-section">
+      <div class="left">   
+      </div>
       <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+      <h4>Ready to <span>SWAP</span> again?</h4>
+      <div className="floating-label">
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" />
+      </div>
+      <div className="floating-label">
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" />
+      </div>
+      <div className="form-section-1 link">
+       <p>Don't have an account yet? <br/>
+        <Link to="/signup"><b>Register</b></Link></p>
+       </div>
         <Button>Submit</Button>
       </form>
-       <div className="form-section link">
-       <p>Don't have an account yet?  <Link to="/signup"><b>Register</b></Link></p>
-      
-     </div>
     </section>
     );
   }

@@ -16,6 +16,8 @@ const service = axios.create({
 const apiHandlerSneaks = {
     service,
 
+    
+
     getMostPopular() {
         return service
         .get("/api/sneakers/home")
@@ -25,14 +27,14 @@ const apiHandlerSneaks = {
 
     getProducts(keyword) {
         return service
-        .get(`/search/${keyword}`)
+        .get(`/api/sneakers/search/${keyword}`)
         .then((res) => res.data)
         .catch(errorHandler);
     },
 
     getProductprices(styleId) {
         return service
-        .get(`/id/${styleId}/prices`)
+        .get(`/api/sneakers/id/${styleId}/prices`)
         .then((res) => res.data)
         .catch(errorHandler);
     },

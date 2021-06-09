@@ -41,6 +41,7 @@ class FormOffer extends Component {
               }, 1000);
             });
             return;
+            
           }
 
     const fd = new FormData();

@@ -15,8 +15,7 @@ class Discover extends React.Component {
         <div>
           <h1>Latest offers</h1>
           
-            <h1>Most Popular</h1>
-            <CardSneaker />
+          <h1>Most Popular</h1>
         </div>
       );
     }

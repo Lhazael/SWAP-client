@@ -3,6 +3,7 @@ import { Link, withRouter, Redirect } from "react-router-dom";
 import { withUser } from "../Auth/withUser";
 import apiHandler from "../../api/apiHandler";
 import Button from "../Base/Button";
+import "../../styles/Form.css";
 
 class FormSignup extends Component {
   state = {
@@ -40,8 +41,13 @@ class FormSignup extends Component {
     }
 
     return (
+      
       <section className="form-section">
+      <div class="left">   
+      </div>
       <form onSubmit={this.handleSubmit}>
+        <h4>Start to <span>SWAP</span> your sneakers</h4>
+        <div className="floating-label">
         <label htmlFor="firstName">First Name</label>
         <input
           onChange={this.handleChange}
@@ -49,14 +55,20 @@ class FormSignup extends Component {
           type="firstName"
           id="firstName"
           name="firstName"
-        /><label htmlFor="lastName">Last Name</label>
+        />
+        </div>
+        <div className="floating-label">
+        <label htmlFor="lastName">Last Name</label>
         <input
           onChange={this.handleChange}
           value={this.state.lastName}
           type="lastName"
           id="lastName"
           name="lastName"
-        /><label htmlFor="username">Username</label>
+        />
+        </div>
+        <div className="floating-label">
+        <label htmlFor="username">Username</label>
         <input
           onChange={this.handleChange}
           value={this.state.username}
@@ -64,6 +76,8 @@ class FormSignup extends Component {
           id="username"
           name="username"
         />
+        </div>
+        <div className="floating-label">
         <label htmlFor="email">Email</label>
         <input
           onChange={this.handleChange}
@@ -72,6 +86,8 @@ class FormSignup extends Component {
           id="email"
           name="email"
         />
+        </div>
+        <div className="floating-label">
         <label htmlFor="password">Password</label>
         <input
           onChange={this.handleChange}
@@ -80,10 +96,12 @@ class FormSignup extends Component {
           id="password"
           name="password"
         />
+        </div>
+        <div className="form-section-1 link">
+        <p>Already have an account? <br/>
+         <Link to="/signin"><b>Sign in!</b></Link></p>
+        </div>
         <Button>Submit</Button>
-        <div className="form-section link">
-       <p>Already have an account? <Link to="/signin"><b>Sign in!</b></Link> </p>
-     </div>
 
       </form>
       </section>

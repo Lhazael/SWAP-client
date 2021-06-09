@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { withUser } from "../components/Auth/withUser";
 import apiHandler from "../api/apiHandler";
-import Search from "../components/Search";
+// import Search from "../components/Search";
 
 import "../styles/NavMain.css";
 
@@ -27,7 +27,10 @@ const NavMain = (props) => {
       </NavLink>
       <ul className="nav-list">
             <li>
-              <Search />
+              {/* <Search /> */}
+            </li>
+            <li>
+              <NavLink to="/sneakers">Sneakers</NavLink>
             </li>
             <li>
               <NavLink to="/discover">Discover</NavLink>
