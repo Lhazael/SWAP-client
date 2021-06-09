@@ -4,7 +4,7 @@
     margin: 0;
   }
   
-FormSignup, FormSignin {
+.FormSignup, .FormSignin {
     height: 84vh;
     width: 80vw;
     margin: 0 0;
@@ -65,7 +65,7 @@ FormSignup, FormSignin {
     border-radius: 24px;
     text-align: center;
     padding: 15px 40px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     font-size: 14px;
     margin-left: auto;
     font-weight: 500;

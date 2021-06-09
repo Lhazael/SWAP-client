@@ -5,18 +5,20 @@ import "../styles/Search.css";
 
 const Search = () => {
     return (
+        
     <div className="search-main">
-    <form action="/" method="get">
-    <label htmlFor="search">
+    <form className="form-search-bar" action="/" method="get">
+    <label className="label-search-bar" htmlFor="search">
     <span className="visually-hidden"></span>
     </label>
-    <input
+    <input className="input-search-bar"
         type="text"
         id="search"
-        placeholder="Search a sneaker"
+        placeholder="Find your grail"
         name="search" 
     />
-    <button type="submit">Find</button>
+    <i class="fa fa-search"></i>
+    {/* <button className="button-search-bar" type="submit">Find</button> */}
 </form>
 </div>
     );
