@@ -1,0 +1,26 @@
+.CardSneaker {
+    padding: 4px 4px;
+    width: 20%;
+    display:inline-block;
+    vertical-align: middle;
+    border: 1px solid #e3e2de;
+    background-color: #e3e2de;
+}
+
+.description {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.description img {
+    display: block;
+    border-style: none;
+}
+
+.description-sneaker h3 {
+    font-size: 18px;
+}
+
+.description-sneaker h4 {
+    font-size: 12px;
+}

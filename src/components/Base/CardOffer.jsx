@@ -6,8 +6,6 @@ const CardOffer = (props) => {
 
   console.log(props,"props in card offer")
 
-  // const { image, title, _id, size, description, handleEdit, handleDelete } =
-  //   props;
 
   return (
     <div className="CardOffer">

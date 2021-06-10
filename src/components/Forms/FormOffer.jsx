@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { withRouter, Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { withUser } from "../Auth/withUser";
 import apiHandler from "../../api/apiHandler";
 import Button from "../Base/Button";
@@ -7,8 +7,9 @@ import { buildFormData } from "../../utils";
 import FeedBack from "../FeedBack";
 import UploadWidget from "../UploadWidget";
 import AutoComplete from "../AutoComplete";
-// import Message from "../Message";
-// import axios from "axios";
+import { shoeSizes} from "../../config"
+import "../../styles/Form.css";
+
 
 const initialState = {
     title: "",
@@ -91,16 +92,20 @@ class FormOffer extends Component {
           };
 
           handleFileSelect = ({ tmpUrl, file }) => {
-            this.setState({ image: file });
+            this.setState({ picture: file });
         };
   
     render(){
         const { httpResponse, error } = this.state;
+        // if (this.state) {
+        //   return <Redirect to="/" />;
+        // }
 
       return (
+        
         <div className="FormOffer-container">
         <form className="FormOffer" onSubmit={this.handleSubmit}>
-          <h2>Create your offer</h2>
+          <h4>Create your offer</h4>
           {httpResponse && (
             <FeedBack
               message={httpResponse.message}
@@ -111,19 +116,11 @@ class FormOffer extends Component {
             <label className="label" htmlFor="title">
               Title
             </label>
-            {/* <input
-              className="input"
-              type="text"
-              onChange={this.handleChange}
-              value={this.state.title}
-              placeholder="e.g.: Air Jordan 1 Union Blue Storm"
-              name="title"
-            /> */}
             <AutoComplete  onSelect={this.handleSelectedSneaker} />
           </div>
           <div className="form-group">
           <label className="label" htmlFor="description">
-              Description
+              Description:
             </label>
             <textarea
               value={this.state.description}
@@ -136,7 +133,7 @@ class FormOffer extends Component {
           </div>
           <div className="form-group">
             <label className="label" htmlFor="condition">
-              Condition
+              Condition:
             </label>
             <select
               name="condition"
@@ -156,7 +153,7 @@ class FormOffer extends Component {
           </div>
           <div className="form-group">
             <label className="label" htmlFor="size">
-              Size (EU)
+              Size (EU):
             </label>
             <select
               name="size"
@@ -164,26 +161,9 @@ class FormOffer extends Component {
               onChange={this.handleChange}
               value={this.state.size}
             >
-              <option value="" disabled>
-                Select a size:
-              </option>
-              <option value="36">36</option>
-              <option value="36.5">36.5</option>
-              <option value="37">37</option>
-              <option value="37.5">37.5</option>
-              <option value="38">38</option>
-              <option value="38.5">38.5</option>
-              <option value="39">39</option>
-              <option value="40">40</option>
-              <option value="40.5">40.5</option>
-              <option value="41">41</option>
-              <option value="42">42</option>
-              <option value="42.5">42.5</option>
-              <option value="43">43</option>
-              <option value="44">44</option>
-              <option value="44.5">44.5</option>
-              <option value="45">45</option>
-              <option value="46">46</option>
+              {shoeSizes.map(size => {
+                    return <option value={size}>{size}</option>
+                })}
             </select>
           </div>
           <div className="form-group">
@@ -199,15 +179,6 @@ class FormOffer extends Component {
               placeholder="What are you looking for?"
             ></textarea>
           </div>
-          {/* <div className="form-group">
-          <label className="label" htmlFor="picture">Pictures</label>
-        <input
-          id="picture"
-          name="picture"
-          type="file"
-          className="input"
-        /> 
-          </div> */}
           <div className="form-group">
             <UploadWidget onFileSelect={this.handleFileSelect} ref={this.imageRef} name="picture">
               Upload picture

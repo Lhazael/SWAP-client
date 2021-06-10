@@ -7,7 +7,7 @@ class About extends React.Component {
       return (
         <div>
           <h1>SWAP YOUR SNEAKERS</h1>
-          <CardOffer />
+          {/* <CardOffer /> */}
         </div>
       );
     }

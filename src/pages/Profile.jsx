@@ -38,10 +38,6 @@ deleteOffer = (offerId) => {
   });
 };
 
-// getUserInfos = () => {
-
-// }
-
 onOfferSelect = (offerId) => {
   const selectedOffer = this.state.userOffers.find(
     (offer) => offer._id === offerId
@@ -72,6 +68,7 @@ render() {
 
     <section className="Profile">
       <div className="wishlist">
+        <h2>Your wishlist</h2>
         <Favorites />
       </div>
 

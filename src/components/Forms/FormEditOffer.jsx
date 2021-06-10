@@ -10,8 +10,6 @@ import { shoeSizes} from "../../config"
 
 
 
-
-
 class FormEditOffer extends Component {
     state = {
         httpResponse: null,
@@ -140,7 +138,6 @@ class FormEditOffer extends Component {
               onChange={this.handleChange}
               value={this.props.size || size[0] || ""}
             >
-          
                 {shoeSizes.map(size => {
                     return <option value={size}>{size}</option>
                 })}

@@ -1,8 +1,7 @@
 import React from "react";
-import CardSneaker from "../components/Base/CardSneaker";
-import sneaksApi from "../api/apiHandlerSneaks";
 import LatestOffers from "../components/LatestOffers";
 import MostPopular from "../components/MostPopular";
+import "../styles/Discover.css";
 
 class Discover extends React.Component {
 
@@ -15,10 +14,10 @@ class Discover extends React.Component {
     render() {
       return (
         <section className="discover-page">
-          <div>
+          <div className="latest-offers">
             <LatestOffers />
           </div>
-          <div>
+          <div className="most-popular">
           <MostPopular />
         </div>
         </section>

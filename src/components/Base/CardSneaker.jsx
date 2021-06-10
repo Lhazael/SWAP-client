@@ -1,14 +1,20 @@
 import React from "react";
+import "../../styles/CardSneaker.css";
 
 
 const CardSneaker = (props) => {
-    // const { shoeName, styleID, retailPrice, releaseDate, thumbnail, resellPrices } =
-    // props;
     
 return (
     <div className="CardSneaker">
-      <div>Adidas</div>
-      <div><h3>{props.sneaker.shoeName}</h3></div>
+      <div className="description">
+      <div className="sneaker-thumbnail">
+        <img src={props.sneaker.thumbnail} alt={props.sneaker.shoeName} />
+      </div>
+      <div className="description-sneaker">
+        <h4>{props.sneaker.styleID}</h4>
+        <h3>{props.sneaker.shoeName}</h3>
+      </div>
+      </div>
     </div>
 )
 };

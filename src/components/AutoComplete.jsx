@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import sneakApi from "../api/apiHandlerSneaks"
+import "../styles/AutoComplete.css";
 
 
 class AutoComplete extends Component {
@@ -44,36 +45,19 @@ class AutoComplete extends Component {
     }
 
 
-    // componentDidUpdate(prevProps,prevState){
-
-
-    //     if(prevState.value !== this.state.value){
-    //         sneakApi.getProducts(this.state.value).then(data => {
-    //             console.log(data)
-    //             this.setState({
-    //                 sneakers: data.slice(0,10)
-    //             })
-    //         }).catch(error => {
-    //             console.log(error)
-    //         })
-    //     }
-
-    // }
-
-
-
     render() {
         return (
-            <div>
+            <div className="autocomplete">
                 <input placeholder="e.g.: Air Jordan 1 Union Blue Storm" onChange={this.handleChange} value={this.state.value} type="text" />
-                <ul>
-                        {this.state.sneakers.map((sneaker) => {
-                            return <li onClick={() => this.handleSneakerClick(sneaker)}>
-                                {sneaker.shoeName}
-                            </li>
-                        })}
-                    
-                </ul>
+                        <ul>
+                            {this.state.sneakers.map((sneaker) => {
+                                return <li onClick={() => this.handleSneakerClick(sneaker)}>
+                                    {sneaker.shoeName}</li>})}
+                        </ul>
+                    <span className="close">Cancel</span>
+                    <div className="dialog">
+                       
+                    </div>
             </div>
         )
     }

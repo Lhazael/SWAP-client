@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import sneaksApi from "../api/apiHandlerSneaks";
 import CardSneaker from "../components/Base/CardSneaker";
+import "../styles/MostPopular.css";
 
 class MostPopular extends Component {
 
@@ -20,13 +21,16 @@ class MostPopular extends Component {
 
     render() {
         return (
-          <div>
+          <section className="container-most-popular">
+          <div className="container-most-popular">
             <h1>Most popular sneakers on the market</h1>
-            <ul>
-            {this.state.sneakers.map(sneaker => <li><CardSneaker sneaker={sneaker} /></li>)}
-            </ul>
-
           </div>
+          <div className="wrapper">
+            <ul>
+            {this.state.sneakers.map(sneaker => <li className="box"><CardSneaker sneaker={sneaker} /></li>)}
+            </ul>
+          </div>
+          </section>
         );
       }
 }
