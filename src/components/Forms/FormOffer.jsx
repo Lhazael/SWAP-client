@@ -6,18 +6,19 @@ import Button from "../Base/Button";
 import { buildFormData } from "../../utils";
 import FeedBack from "../FeedBack";
 import UploadWidget from "../UploadWidget";
+import AutoComplete from "../AutoComplete";
 // import Message from "../Message";
 // import axios from "axios";
 
 const initialState = {
     title: "",
-    sku: "",
     description: "",
     condition: "",
     size: "",
     lookingFor: "",
     picture: [],
     price: "",
+    selectedSneaker : null
 }
 
 class FormOffer extends Component {
@@ -80,6 +81,18 @@ class FormOffer extends Component {
               }, 1000);
             });
           };
+
+
+          handleSelectedSneaker = (sneaker) => {
+            this.setState({
+              selectedSneaker: sneaker,
+              title: sneaker.shoeName
+            })
+          };
+
+          handleFileSelect = ({ tmpUrl, file }) => {
+            this.setState({ image: file });
+        };
   
     render(){
         const { httpResponse, error } = this.state;
@@ -98,14 +111,15 @@ class FormOffer extends Component {
             <label className="label" htmlFor="title">
               Title
             </label>
-            <input
+            {/* <input
               className="input"
               type="text"
               onChange={this.handleChange}
               value={this.state.title}
               placeholder="e.g.: Air Jordan 1 Union Blue Storm"
               name="title"
-            />
+            /> */}
+            <AutoComplete  onSelect={this.handleSelectedSneaker} />
           </div>
           <div className="form-group">
           <label className="label" htmlFor="description">
@@ -131,7 +145,7 @@ class FormOffer extends Component {
               value={this.state.condition}
             >
               <option value="" disabled>
-                Condition:
+                What's the shoes condition?
               </option>
               <option value="new-with-tags">New with tags</option>
               <option value="new-without-tags">New without tags</option>
@@ -195,7 +209,7 @@ class FormOffer extends Component {
         /> 
           </div> */}
           <div className="form-group">
-            <UploadWidget ref={this.imageRef} name="picture">
+            <UploadWidget onFileSelect={this.handleFileSelect} ref={this.imageRef} name="picture">
               Upload picture
             </UploadWidget>
           </div>
@@ -211,7 +225,6 @@ class FormOffer extends Component {
               name="price"
             />
           </div>
-
           {error && <FeedBack message={error} status="failure" />}
           <Button primary>Add</Button>
         </form>

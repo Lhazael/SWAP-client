@@ -16,7 +16,12 @@ const service = axios.create({
 const apiHandlerSneaks = {
     service,
 
-    
+    findOne(styleId){
+      return service
+      .get(`/api/sneakers/id/${styleId}`)
+      .then((res) => res.data)
+      .catch(errorHandler);
+    },
 
     getMostPopular() {
         return service

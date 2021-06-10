@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function Sneaker(){
-    // const { id } = useParams();
-    const url = `http://localhost:5000/home`;
+    const { id } = useParams();
+    const url = "http://localhost:5000/id/BV0073-300";
     const [sneaker, setSneaker] = useState(null);
 
     let content = null;

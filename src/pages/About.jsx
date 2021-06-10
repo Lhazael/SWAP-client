@@ -1,4 +1,5 @@
 import React from "react";
+import CardOffer from "../components/Base/CardOffer";
 import Search from "../components/Search";
 
 class About extends React.Component {
@@ -6,7 +7,7 @@ class About extends React.Component {
       return (
         <div>
           <h1>SWAP YOUR SNEAKERS</h1>
-          <Search />
+          <CardOffer />
         </div>
       );
     }

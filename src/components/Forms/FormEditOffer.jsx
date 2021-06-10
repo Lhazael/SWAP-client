@@ -39,7 +39,7 @@ class FormEditOffer extends Component {
             this.setState({
                 httpResponse: {
                     status: "success",
-                    message: "Offer successfully added.",
+                    message: "Offer successfully updated.",
                 },
             });
         
@@ -77,9 +77,6 @@ class FormEditOffer extends Component {
             className="FormOffer"
             onSubmit={this.handleSubmit}
         >
-          {/* <p onClick={this.props.handleClose} className="close-link">
-            X
-          </p> */}
           <h2>Edit your offer</h2>
           {httpResponse && (
             <FeedBack

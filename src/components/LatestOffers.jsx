@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class Favorites extends Component {
+class LatestOffers extends Component {
     render() {
         return (
           <div>
-            <h1>Wishlist</h1>
+            <h1>Latest Offers</h1>
           </div>
         );
       }
 }
 
 
-export default Favorites;
+export default LatestOffers;

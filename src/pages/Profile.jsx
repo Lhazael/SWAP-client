@@ -3,6 +3,7 @@ import { withUser } from "../components/Auth/withUser";
 import apiHandler from "../api/apiHandler";
 import Button from "../components/Base/Button";
 import CardOffer from "../components/Base/CardOffer";
+import Favorites from "../components/Favorites";
 
 
 class Profile extends Component {
@@ -66,19 +67,22 @@ render() {
   return (
 
     <section className="Profile">
+      <div className="wishlist">
+        <Favorites />
+      </div>
 
     {!userOffers.length && (
       <React.Fragment>
         <div>
-          {/* <img src="/media/personal-page-empty-state.svg" alt="" /> */}
+          <h1>Your offers</h1>
         </div>
-        <p>You don't have any items :(</p>
+        <p>You don't have any offer yet :(</p>
       </React.Fragment>
     )}
 
     {!!userOffers.length && (
           <div className="CardOffers">
-            <h3>Your offers</h3>
+            <h1>Your offers</h1>
             {userOffers.map((offer, index) => (
               <CardOffer
                 key={index}

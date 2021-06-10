@@ -29,9 +29,9 @@ const NavMain = (props) => {
             <li>
               {/* <Search /> */}
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/sneakers">Sneakers</NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink to="/discover">Discover</NavLink>
             </li>
