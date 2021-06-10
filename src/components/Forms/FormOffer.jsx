@@ -49,7 +49,7 @@ class FormOffer extends Component {
     const { httpResponse, ...data } = this.state;
     buildFormData(fd, data);
 
-    fd.append("image", this.imageRef.current.files[0]);
+    fd.append("picture", this.imageRef.current.files[0]);
 
     apiHandler
         .addOffer(fd)

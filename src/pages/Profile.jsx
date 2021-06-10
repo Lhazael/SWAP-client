@@ -38,6 +38,10 @@ deleteOffer = (offerId) => {
   });
 };
 
+// getUserInfos = () => {
+
+// }
+
 onOfferSelect = (offerId) => {
   const selectedOffer = this.state.userOffers.find(
     (offer) => offer._id === offerId
