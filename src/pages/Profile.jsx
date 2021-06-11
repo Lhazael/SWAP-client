@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { withUser } from "../components/Auth/withUser";
 import apiHandler from "../api/apiHandler";
-import Button from "../components/Base/Button";
 import CardOffer from "../components/Base/CardOffer";
 import Favorites from "../components/Favorites";
 
@@ -11,6 +10,7 @@ class Profile extends Component {
     userOffers: [],
     httpResponse: null,
   };
+
 
   componentDidMount() {
     const promises = Promise.all([

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { withRouter, Redirect } from "react-router-dom";
 import { withUser } from "../Auth/withUser";
 import apiHandler from "../../api/apiHandler";
 import Button from "../Base/Button";
@@ -76,12 +75,6 @@ class FormEditOffer extends Component {
             onSubmit={this.handleSubmit}
         >
           <h2>Edit your offer</h2>
-          {httpResponse && (
-            <FeedBack
-              message={httpResponse.message}
-              status={httpResponse.status}
-            />
-          )}
           <div className="form-group">
             <label className="label" htmlFor="title">
               Title
@@ -173,8 +166,6 @@ class FormEditOffer extends Component {
               name="price"
             />
           </div>
-
-          {error && <FeedBack message={error} status="failure" />}
           <Button primary>Edit</Button>
         </form>
       </div>

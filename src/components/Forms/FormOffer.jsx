@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-// import { Redirect } from "react-router-dom";
 import { withUser } from "../Auth/withUser";
 import apiHandler from "../../api/apiHandler";
 import Button from "../Base/Button";
 import { buildFormData } from "../../utils";
-import FeedBack from "../FeedBack";
 import UploadWidget from "../UploadWidget";
 import AutoComplete from "../AutoComplete";
 import { shoeSizes} from "../../config"
@@ -19,8 +17,10 @@ const initialState = {
     lookingFor: "",
     picture: [],
     price: "",
-    selectedSneaker : null
-}
+    selectedSneaker: null,
+    httpResponse: null,
+    error: null,
+};
 
 class FormOffer extends Component {
     state = initialState;
@@ -37,7 +37,7 @@ class FormOffer extends Component {
         event.preventDefault();
 
         if (!this.state.title) {
-            this.setState({ error: "All categories are required !" }, () => {
+            this.setState({ error: "Title is required !" }, () => {
               this.timeoutId = setTimeout(() => {
                 this.setState({ error: null });
               }, 1000);
@@ -50,27 +50,34 @@ class FormOffer extends Component {
     const { httpResponse, ...data } = this.state;
     buildFormData(fd, data);
 
-    fd.append("picture", this.imageRef.current.files[0]);
+    // fd.append("picture", this.imageRef.current.files[0]);
+
+    [...this.imageRef.current.files].forEach((file) => {
+      return fd.append("picture", file)
+    }) 
 
     apiHandler
         .addOffer(fd)
         .then((data) => {
-            this.props.addOffer(data);
-
+            // this.props.addOffer(data);
+            this.props.history.push("/profile")
+        })
+        .catch((error) => {
+          console.log(error)
             this.setState({
-                ...initialState,
-                httpResponse: {
-                  status: "success",
-                  message: "Item successfully added.",
-                },
-              });
+                // ...initialState,
+            //     httpResponse: {
+            //       status: "success",
+            //       message: "Item successfully added.",
+            //     },
+            //   });
       
-              this.timeoutId = setTimeout(() => {
-                this.setState({ httpResponse: null });
-              }, 1000);
-            })
-            .catch((error) => {
-              this.setState({
+            //   this.timeoutId = setTimeout(() => {
+            //     this.setState({ httpResponse: null });
+            //   }, 1000);
+            // })
+            // .catch((error) => {
+            //   this.setState({
                 httpResponse: {
                   status: "failure",
                   message: "An error occured, try again later.",
@@ -96,7 +103,7 @@ class FormOffer extends Component {
         };
   
     render(){
-        const { httpResponse, error } = this.state;
+        // const { httpResponse, error } = this.state;
         // if (this.state) {
         //   return <Redirect to="/" />;
         // }
@@ -106,12 +113,6 @@ class FormOffer extends Component {
         <div className="FormOffer-container">
         <form className="FormOffer" onSubmit={this.handleSubmit}>
           <h4>Create your offer</h4>
-          {httpResponse && (
-            <FeedBack
-              message={httpResponse.message}
-              status={httpResponse.status}
-            />
-          )}
           <div className="form-group">
             <label className="label" htmlFor="title">
               Title
@@ -180,7 +181,7 @@ class FormOffer extends Component {
             ></textarea>
           </div>
           <div className="form-group">
-            <UploadWidget onFileSelect={this.handleFileSelect} ref={this.imageRef} name="picture">
+            <UploadWidget onFileSelect={this.handleFileSelect} ref={this.imageRef} name="picture" >
               Upload picture
             </UploadWidget>
           </div>
@@ -196,8 +197,7 @@ class FormOffer extends Component {
               name="price"
             />
           </div>
-          {error && <FeedBack message={error} status="failure" />}
-          <Button primary>Add</Button>
+          <Button primary="true" >Add</Button>
         </form>
       </div>
       );

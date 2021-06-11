@@ -29,6 +29,7 @@ const UploadWidget = React.forwardRef((props, ref) => {
         id={props.name}
         name={props.name}
         type="file"
+        multiple
       />
     </React.Fragment>
   );

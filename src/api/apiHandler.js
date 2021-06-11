@@ -80,21 +80,21 @@ const apiHandler = {
 
   getUserInfos() {
     return service  
-      .get("/users")
+      .get("/users/me")
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
   updateUser(userId, data) {
     return service 
-      .patch("/users", data)
+      .patch("/users/me", data)
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
   getUserOffers() {
     return service
-      .get("/users/offers")
+      .get("/users/me/offers")
       .then((res) => res.data)
       .catch(errorHandler);
   },
