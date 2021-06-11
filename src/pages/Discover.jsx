@@ -14,9 +14,6 @@ class Discover extends React.Component {
     render() {
       return (
         <section className="discover-page">
-          <div className="latest-offers">
-            <LatestOffers />
-          </div>
           <div className="most-popular">
           <MostPopular />
         </div>

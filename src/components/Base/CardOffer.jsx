@@ -1,6 +1,6 @@
 import React from "react";
 // import Button from "./Button";
-// import "../../styles/CardOffer.css";
+import "../../styles/CardOffer.css";
 
 const CardOffer = (props) => {
 
@@ -9,8 +9,16 @@ const CardOffer = (props) => {
 
   return (
     <div className="CardOffer">
-      <div>Nikes</div>
-      <div><h2>{props.offer.title}</h2></div>
+      <div className="description">
+        <h2>{props.offer.title}</h2>
+      </div>
+        <div className="sneaker-thumbnail">
+        <img src={props.offer.picture[0]} alt={props.offer.title} />
+      </div>
+      <div className="description-offer">
+        <p>Looking for:{props.offer.lookingFor}</p>
+        <p>Size: {props.offer.size}</p>
+      </div>
     </div>
   );
 };

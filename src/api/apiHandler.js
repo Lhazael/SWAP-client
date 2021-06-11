@@ -87,14 +87,14 @@ const apiHandler = {
 
   updateUser(userId, data) {
     return service 
-      .patch("/users/me", data)
+      .patch("/users", data)
       .then((res) => res.data)
       .catch(errorHandler);
   },
 
   getUserOffers() {
     return service
-      .get("/users/me/offers")
+      .get("/users/offers")
       .then((res) => res.data)
       .catch(errorHandler);
   },

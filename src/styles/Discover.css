@@ -2,6 +2,17 @@
  width: auto;
 }
 
+.discover-page div {
+    margin-bottom: 20%;
+}
+
+
+.latest-offers {
+    display:grid;
+    margin: auto;
+}
+
 .most-popular {
     display: grid;
+    margin: auto;
 }

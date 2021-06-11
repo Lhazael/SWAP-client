@@ -1,0 +1,22 @@
+.wrapper {
+    display: grid;
+    grid-template-rows: 10px 100px 100px;
+    grid-gap: 10px;
+}
+
+.wrapper .box {
+    padding: 20px;
+}
+
+.wrapper ul {
+    /* width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between; */
+
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}

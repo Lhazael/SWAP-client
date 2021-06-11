@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import CardOffer from './Base/CardOffer';
 import apiHandler from "../api/apiHandler"
+import "../styles/LatestOffers.css";
+
 class LatestOffers extends Component {
 
 
   state = {
     offers: [],
   }
-
-
 
 
     componentDidMount(){
@@ -21,18 +21,18 @@ class LatestOffers extends Component {
     }
 
 
-
-
     render() {
         return (
-          <div>
-            <h1>Latest Offers</h1>
-
+          <section className="container-latest-offers">
+          <div className="container-lastest-offers">
+            <h1>Latest offers</h1>
+          </div>
+          <div className="wrapper">
             <ul>
-
-            {this.state.offers.map(offer => <li><CardOffer offer={offer} /></li>)}
+            {this.state.offers.map(offer => <li className="box"><CardOffer offer={offer} /></li>)}
             </ul>
           </div>
+          </section>
         );
       }
 }
