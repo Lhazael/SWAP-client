@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from 'axios';
 import LinkOffer from "../components/LinkOffer";
 // import { withUser } from "../components/Auth/withUser";
-// import apiHandler from "../api/apiHandler";
 
 
 class Offers extends React.Component {
